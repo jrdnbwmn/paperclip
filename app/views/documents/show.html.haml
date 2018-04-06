@@ -2,3 +2,6 @@
 %p= @document.content
 
 = link_to "All Documents", documents_path
+
+= link_to "Edit", edit_document_path(@document)
+= link_to "Delete", document_path(@document), method: :delete, data: { confirm: "Are you sure?" }
