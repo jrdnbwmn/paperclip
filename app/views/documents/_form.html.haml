@@ -1,4 +1,4 @@
 = simple_form_for @document do |f|
-    = f.input :title
-    = f.input :content
+    = f.input :title, input_html: { class: 'form-control mb1' }
+    = f.input :content, input_html: { class: 'form-control mb1' }
     = f.button :submit, class: "btn btn--outline"
