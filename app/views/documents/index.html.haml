@@ -1,5 +1,11 @@
-- @documents.each do |document|
-    %h2= link_to document.title, document
-    %p= time_ago_in_words(document.created_at)
-
-= link_to "New Document", new_document_path
+%div.container
+  - unless @documents.blank?
+    - @documents.each do |document|
+      %a{ href: (url_for [document]) }
+        .document
+          %h3.title= document.title
+          %p.date= time_ago_in_words(document.created_at)
+  - else 
+    %h2 Add a note
+    %p It appears you haven't created any documents.
+    = link_to "New Document", new_document_path
