@@ -1,0 +1,31 @@
+// Sections
+// -------------------------------------------------------------------
+// Index page
+.documents-index {
+    margin-left: 0;
+
+    @media screen and (min-width: $breakpoint--sm) {
+        margin-left:$tags-index-width;
+    }
+}
+
+.mobile-menu-icon {
+    cursor: pointer;
+    top: 5px;
+}
+
+.tags-index--desktop { width: $tags-index-width; }
+
+.tags-index__mobile-nav { display: none; }
+
+// Writing pages
+.document-menu {
+    position: static;
+
+    @media screen and (min-width: $breakpoint--sm) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding-top: $space-1;
+    }
+}
