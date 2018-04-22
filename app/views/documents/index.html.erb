@@ -1,29 +1,178 @@
+<!-- Desktop tags index -->
+<nav class="tags-index--desktop fixed top--0 bottom--0 left--0 bg--dark-tan hide-on-mobile">
+  <div class="tag-container pt2">
+
+    <h1 class="mb0">
+      <a href="/" class="link link--text monospace pl2 pr2 block mb2">
+        <%= image_tag "paperclip_logo.svg", class: "logo", alt: "Paperclip" %>
+      </a>
+    </h1>
+
+    <!-- Tags -->
+    <ul class="no-bullets">
+        <!-- Todo -->
+        <li class="">
+            <a href="" class="link link--highlight pl2 pr2 pts pbs block">
+                <div class="grid-row">
+                    <span class="grid-column ellipsis pr0">All</span>
+                    <span class="grid-column span-3 align--right pl0">22</span>
+                </div>
+            </a>
+        </li>
+        <li class="">
+            <a href="" class="link link--highlight pl2 pr2 pts pbs block">
+                <div class="grid-row">
+                    <span class="grid-column ellipsis pr0">blog</span>
+                    <span class="grid-column span-3 align--right pl0">7</span>
+                </div>
+            </a>
+        </li>
+        <li class="">
+            <a href="" class="link link--highlight pl2 pr2 pts pbs block">
+                <div class="grid-row">
+                    <span class="grid-column ellipsis pr0">business</span>
+                    <span class="grid-column span-3 align--right pl0">3</span>
+                </div>
+            </a>
+        </li>
+        <li class="">
+            <a href="" class="link link--highlight pl2 pr2 pts pbs block">
+                <div class="grid-row">
+                    <span class="grid-column ellipsis pr0">essays</span>
+                    <span class="grid-column span-3 align--right pl0">2</span>
+                </div>
+            </a>
+        </li>
+        <li class="">
+            <a href="" class="link link--highlight pl2 pr2 pts pbs block">
+                <div class="grid-row">
+                    <span class="grid-column ellipsis pr0">journal</span>
+                    <span class="grid-column span-3 align--right pl0">10</span>
+                </div>
+            </a>
+        </li>
+        <li class="">
+            <a href="" class="link link--highlight pl2 pr2 pts pbs block">
+                <div class="grid-row">
+                    <span class="grid-column">Archived</span>
+                    <span class="grid-column span-3 align--right"></span>
+                </div>
+            </a>
+        </li>
+    </ul>
+
+  </div>
+
+  <!-- Settings -->
+  <div class="fixed bottom--0 left--0">
+      <div class="link link--text p2 js-popup-toggle"><i data-feather="settings"></i></div>
+      <!-- Popup -->
+      <div class="settings-popup absolute border--full rounded full-shadow bg--white js-popup">
+          <a href="settings.html" class="link link--highlight block mb0 pl1 pr1 pts pbs border--bottom"><i data-feather="user" class="vertical--text-top"></i>&nbsp;&nbsp;Account</a>
+          <a href="" class="link link--highlight block mb0 pl1 pr1 pts pbs"><i data-feather="log-out" class="vertical--text-top"></i>&nbsp;&nbsp;Log Out</a>
+      </div>
+  </div>
+    
+</nav>
+
+<!-- Mobile tags index -->
+<nav class="tags-index--mobile bg--dark-tan pts pbs show-on-mobile">
+    <div class="container">
+        <div class="clearfix">
+            <h1 class="mb0 float--left">
+              <a href="/" class="link link--text monospace">
+                <%= image_tag "paperclip_logo.svg", class: "logo--mobile relative", alt: "Paperclip" %>
+              </a>
+            </h1>
+            <div class="mobile-menu-icon float--right pl3 relative js-slidedown-toggle">
+                <span class="vertical--top">All</span> <i data-feather="menu" class="ml1"></i>
+            </div>
+        </div>
+    </div>
+    <div class="tags-index__mobile-nav js-slidedown">
+        <ul class="no-bullets border--top pt1 mts">
+            <li class="">
+                <a href="" class="link link--highlight pl2 pr2 pts pbs block">All</a>
+            </li>
+            <li class="">
+                <a href="" class="link link--highlight pl2 pr2 pts pbs block">blog</a>
+            </li>
+            <li class="">
+                <a href="" class="link link--highlight pl2 pr2 pts pbs block">business</a>
+            </li>
+            <li class="">
+                <a href="" class="link link--highlight pl2 pr2 pts pbs block">essays</a>
+            </li>
+            <li class="">
+                <a href="" class="link link--highlight pl2 pr2 pts pbs block">journal</a>
+            </li>
+            <li class="">
+                <a href="" class="link link--highlight pl2 pr2 pts pbs block">Archived</a>
+            </li>
+        <ul class="no-bullets border--top pt1 mt1">
+            <li>
+                <a href="settings.html" class="link link--highlight block pl2 pr2 pts pbs">Account</a>
+            </li>
+            <li>
+                <a href="" class="link link--highlight block pl2 pr2 pts pbs">Log Out</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Documents index -->
+<div class="documents-index p2">
+  <div class="pb2">
+
+    <!-- New -->
+    <div class="mb2">
+      <%= link_to new_document_path, class: 'btn btn--default' do %>
+        <i data-feather="plus" class="vertical--text-top relative" style="bottom:1px;"></i><span> New</span>
+      <% end %>
+    </div>
+
+    <!-- Documents -->
+    <div class="border--top">
+      <% @documents.each do |document| %>
+        <div class="border--bottom">
+          <div class="grid-row grid-row--center">
+            <div class="grid-column ellipsis">
+              <h4 class="mb0 ellipsis">
+                <%= link_to edit_document_path(document), class: 'link link--text block pt2 pb2' do %>
+                  <%= document.title %>
+                <% end %>
+              </h4> 
+            </div>
+            <div class="grid-column span-3 align--right">
+              <%= link_to edit_document_path(document), class: 'link mr2' do %>
+                <i data-feather="edit" class="vertical--text-top"></i>
+              <% end %>
+              <!-- Todo -->
+              <a href="" class="link"><i data-feather="archive" class="vertical--text-top"></i></a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
 <p id="notice"><%= notice %></p>
 
-<h1>Documents</h1>
-
 <table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
   <tbody>
     <% @documents.each do |document| %>
       <tr>
-        <td><%= document.title %></td>
-        <td><%= document.content %></td>
         <td><%= link_to 'Show', document %></td>
-        <td><%= link_to 'Edit', edit_document_path(document) %></td>
         <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Document', new_document_path %>
