@@ -56,3 +56,11 @@ $( ".js-modal-toggle" ).click(function() {
 $( ".js-modal-close" ).click(function() {
     $( ".js-modal" ).hide();
 });
+
+
+// Snack bar
+// ----------------------------------------------------------------
+$( ".js-snack-bar-toggle" ).click(function() {
+    $( ".js-snack-bar" ).slideToggle( 300, function() {
+    });
+});

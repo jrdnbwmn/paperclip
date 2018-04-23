@@ -1,0 +1,30 @@
+// Snack bar
+// -------------------------------------------------------------------
+.snack-bar {
+    font-size: 0;
+    left: 50%;
+    margin-left: -320px;
+    max-width: 100%;
+    width: 640px;
+
+    @media screen and (max-width: $breakpoint--sm) {
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+        left: 0;
+        margin-left: 0;
+        padding-left: $space-2 !important;
+        padding-right: $space-2 !important;
+        padding-top: $baseline*3 !important;
+        padding-bottom: $baseline*3 !important;
+    }
+}
+
+.snack-bar__text {
+    font-size: 1rem;
+    width: 70%;
+}
+
+.snack-bar__button {
+    font-size: 1rem;
+    width: 30%;
+}
