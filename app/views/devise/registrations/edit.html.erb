@@ -1,5 +1,7 @@
+<% browser_title "Account" %>
+
 <div class="container--sm pt3 pb3">
-    <h2 class="mb2">Account</h2>
+  <h2 class="mb2">Account</h2>
   
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= devise_error_messages! %>

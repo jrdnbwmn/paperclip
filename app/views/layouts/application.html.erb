@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
 
-    <title>Paperclip</title>
+    <title>Paperclip | <%= content_for?(:browser_title) ? yield(:browser_title) : 'Markdown Editer' %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
