@@ -60,7 +60,8 @@ $( ".js-modal-close" ).click(function() {
 
 // Snack bar
 // ----------------------------------------------------------------
-$( ".js-snack-bar-toggle" ).click(function() {
-    $( ".js-snack-bar" ).slideToggle( 300, function() {
+$(document).on('turbolinks:load', function(){
+    $(".js-snack-bar").delay(5000).slideUp(500, function(){
+          $(".js-snack-bar").alert('close');
+      });
     });
-});

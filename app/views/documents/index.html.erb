@@ -154,7 +154,9 @@
                 <i data-feather="edit" class="vertical--text-top"></i>
               <% end %>
               <!-- Todo -->
-              <a href="" class="link"><i data-feather="archive" class="vertical--text-top"></i></a>
+              <%= link_to document, method: :delete, data: { confirm: 'Are you sure?' }, class: "link" do %>
+                <i data-feather="trash" class="vertical--text-top"></i>
+              <% end %>
             </div>
           </div>
         </div>
@@ -163,18 +165,3 @@
 
   </div>
 </div>
-
-
-
-
-
-<table>
-  <tbody>
-    <% @documents.each do |document| %>
-      <tr>
-        <td><%= link_to 'Show', document %></td>
-        <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
