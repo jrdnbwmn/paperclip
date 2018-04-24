@@ -49,6 +49,7 @@
       </div>
       <div class="mb2">
         <label class="label" for="">Category</label>
+        <%= form.collection_select :category_id, Category.all, :id, :name %>
         <input class="form-control" id="category" type="text" placeholder="Add category...">
       </div>
       <div class="clearfix">
