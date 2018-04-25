@@ -201,6 +201,10 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
     position: relative;
     overflow: hidden;
     background: $tan;
+
+    @media screen and (max-width: $breakpoint--sm) {
+        overflow: visible;
+    }
 }
 .CodeMirror-scroll {
     overflow: scroll!important;
@@ -695,10 +699,32 @@ span.CodeMirror-selectedtext {
 .cm-formatting-header-5 { margin-left: -65px; }
 .cm-formatting-header-6 { margin-left: -75.8333px; }
 
+.cm-formatting-header-1,
+.cm-formatting-header-2,
+.cm-formatting-header-3,
+.cm-formatting-header-4,
+.cm-formatting-header-5,
+.cm-formatting-header-6 {
+    @media screen and (max-width: $breakpoint--sm) {
+        margin-left: 0;
+    }
+}
+
 // The little markings, such as the asterisks around italics
 .cm-formatting,
 .cm-formatting-code-block,
 .cm-formatting-code {
     color: $lightest-gray !important;
     background: transparent !important;
+}
+
+// Style lists
+.cm-formatting-list {
+    position: absolute;
+    left: 58px;
+
+    @media screen and (max-width: $breakpoint--sm) {
+        position: static;
+        left: 0;
+    }
 }
