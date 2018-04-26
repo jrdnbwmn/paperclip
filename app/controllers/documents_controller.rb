@@ -5,6 +5,7 @@ class DocumentsController < ApplicationController
   # GET /documents.json
   def index
     @documents = Document.where(user_id: current_user)
+    @categories = Category.where(user_id: current_user)
   end
 
   # GET /documents/1
@@ -28,7 +29,7 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       if @document.save
-        format.html { render :edit }
+        format.html { render :edit, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @document }
       else
         format.html { render :new }
@@ -69,6 +70,6 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:title, :content)
+      params.require(:document).permit(:title, :content, :category_id, :new_category_name)
     end
 end

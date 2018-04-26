@@ -50,8 +50,10 @@
         <%= form.text_field :title, class: "form-control", placeholder: "Title..." %>
       </div>
       <div class="mb2">
-        <label class="label" for="">Category</label>
-        <input class="form-control" id="category" type="text" placeholder="Add category...">
+        <label class="label" for="product_category_id">Category:</label>
+        <%= form.collection_select :category_id, Category.all, :id, :name, :prompt => "Select a Category" %>
+        <p>or create one:</p>
+        <%= form.text_field :new_category_name %>
       </div>
       <div class="clearfix">
         <%= form.submit "Save", class: "btn btn--default float--right" %>
