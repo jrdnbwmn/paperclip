@@ -1,3 +1,29 @@
 <% browser_title "New" %>
 
 <%= render 'form', document: @document %>
+
+<!-- Front matter modal -->
+<div class="modal-background js-modal" style="display: block;">
+  <div class="modal full-shadow p2">
+    <h3 class="pbs">Write a title</h3>
+
+    <%= form_with(model: @document, local: true) do |form| %>
+      <div class="mb1">
+        <%= form.text_field :title, class: "form-control", placeholder: "Title..." %>
+      </div>
+      <div class="clearfix">
+        <%= form.submit "Save", class: "btn btn--default float--right" %>
+        <%= link_to 'Cancel', root_path, class: "btn btn--outline float--right mr1" %>
+      </div>
+
+      <!-- Explain errors -->
+      <% if @document.errors.any? %>
+        <div class="snack-bar fixed bottom--0 z5 full-shadow bg--primary-color rounded--top pt1 pb1 pl3 pr3 text--white none js-snack-bar">
+          <p class="snack-bar__text align--center pl1 pr1 mb0"><%= pluralize(document.errors.count, "error") %> prohibited this document from being saved: <%= message %></p>
+        </div>
+      <% end %>
+
+    <% end %>
+
+  </div>
+</div>

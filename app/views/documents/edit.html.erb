@@ -1,3 +1,44 @@
 <% @browser_tab_title="Edit" %>
 
 <%= render 'form', document: @document %>
+
+<!-- Front matter modal -->
+<div class="modal-background js-modal">
+  <div class="modal full-shadow p2">
+    <h3 class="pbs">Document Front Matter</h3>
+
+    <%= form_with(model: @document, local: true) do |form| %>
+      <div class="mb1">
+        <%= form.label :title, class: "label" %>
+        <%= form.text_field :title, class: "form-control", placeholder: "Title..." %>
+      </div>
+      <div class="mb1">
+        <label class="label block" for="product_category_id">Choose exisiting category:</label>
+        <div class="select">
+          <select name="document[category_id]" id="document_category_id" skip_default_ids="false" allow_method_names_outside_object="true">  
+            <% @categories.uniq.each do |category| %>
+              <option value="<%= category.id %>"><%= category.name %></option>
+            <% end %>
+          </select>
+        </div>
+      </div>
+      <div class="mb2">
+        <p class="mb0">Or create one:</p>
+        <%= form.text_field :new_category_name, class: "form-control" %>
+      </div>
+      <div class="clearfix">
+        <%= form.submit "Save", class: "btn btn--default float--right" %>
+        <a class="btn btn--outline float--right mr1 js-modal-close">Cancel</a>
+      </div>
+
+      <!-- Explain errors -->
+      <% if @document.errors.any? %>
+        <div class="snack-bar fixed bottom--0 z5 full-shadow bg--primary-color rounded--top pt1 pb1 pl3 pr3 text--white none js-snack-bar">
+          <p class="snack-bar__text align--center pl1 pr1 mb0"><%= pluralize(document.errors.count, "error") %> prohibited this document from being saved: <%= message %></p>
+        </div>
+      <% end %>
+
+    <% end %>
+
+  </div>
+</div>
