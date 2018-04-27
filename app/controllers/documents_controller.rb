@@ -6,7 +6,7 @@ class DocumentsController < ApplicationController
   def index
     @documents = Document.where(user_id: current_user)
     @user = current_user
-    @categories = @user.categories.all
+    @categories = @user.categories
   end
 
   # GET /documents/1
@@ -28,7 +28,7 @@ class DocumentsController < ApplicationController
   def create
     @document = current_user.documents.build(document_params)
     @user = current_user
-    @categories = @user.categories.all
+    @categories = @user.categories
 
     respond_to do |format|
       if @document.save
@@ -45,7 +45,7 @@ class DocumentsController < ApplicationController
   # PATCH/PUT /documents/1.json
   def update
     @user = current_user
-    @categories = @user.categories.all
+    @categories = @user.categories
 
     respond_to do |format|
       if @document.update(document_params)
@@ -63,7 +63,7 @@ class DocumentsController < ApplicationController
   def destroy
     @document.destroy
     respond_to do |format|
-      format.html { redirect_to documents_url, notice: 'Document was successfully destroyed.' }
+      format.html { redirect_to documents_url, notice: 'Document has been deleted.' }
       format.json { head :no_content }
     end
   end

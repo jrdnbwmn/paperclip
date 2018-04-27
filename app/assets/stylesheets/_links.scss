@@ -81,3 +81,24 @@
     background-color: $primary-color;
     transition: color 0s;
 }
+
+// Highlighted
+.link--highlighted,
+.link--highlighted:link,
+.link--highlighted:visited {
+    color: $white;
+    transition: color 0s;
+    background-color: $primary-color;
+}
+
+.link--highlighted:hover,
+.link--highlighted:focus {
+    color: $white;
+    background-color: $primary-color;
+}
+
+.link--highlighted:active {
+    color: $shade;
+    background-color: $primary-color;
+    transition: color 0s;
+}
