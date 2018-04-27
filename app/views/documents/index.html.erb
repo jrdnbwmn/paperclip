@@ -16,7 +16,7 @@
         <%= link_to root_path, class: 'link link--highlight link--highlighted pl2 pr2 pts pbs block' do %>
           <div class="grid-row">
             <span class="grid-column ellipsis pr0">All</span>
-            <span class="grid-column span-3 align--right pl0">22</span>
+            <span class="grid-column span-3 align--right pl0"><%= @documents.count %></span>
           </div>
         <% end %>
       </li>
@@ -25,7 +25,7 @@
           <%= link_to category_path(category), class: 'link link--highlight pl2 pr2 pts pbs block' do %>
             <div class="grid-row">
               <span class="grid-column ellipsis pr0"><%= category.name %></span>
-              <span class="grid-column span-3 align--right pl0">#</span>
+              <span class="grid-column span-3 align--right pl0"><%= category.documents.where(user_id: current_user).count %></span>
             </div>
           <% end %>
         </li>
