@@ -5,7 +5,8 @@ class DocumentsController < ApplicationController
   # GET /documents.json
   def index
     @documents = Document.where(user_id: current_user)
-    @categories = Category.where(user_id: current_user)
+    @user = current_user
+    @categories = @user.categories.all
   end
 
   # GET /documents/1
@@ -26,6 +27,8 @@ class DocumentsController < ApplicationController
   # POST /documents.json
   def create
     @document = current_user.documents.build(document_params)
+    @user = current_user
+    @categories = @user.categories.all
 
     respond_to do |format|
       if @document.save
@@ -41,6 +44,9 @@ class DocumentsController < ApplicationController
   # PATCH/PUT /documents/1
   # PATCH/PUT /documents/1.json
   def update
+    @user = current_user
+    @categories = @user.categories.all
+
     respond_to do |format|
       if @document.update(document_params)
         format.html { render :edit }

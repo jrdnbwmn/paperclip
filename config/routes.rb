@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :documents
+  resources :categories
 
   authenticated :user do
     root to: "documents#index", as: "authenticated_root"
