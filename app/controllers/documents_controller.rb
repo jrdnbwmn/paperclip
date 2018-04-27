@@ -17,10 +17,14 @@ class DocumentsController < ApplicationController
   # GET /documents/new
   def new
     @document = current_user.documents.build
+    @user = current_user
+    @categories = @user.categories.order(:name)
   end
 
   # GET /documents/1/edit
   def edit
+    @user = current_user
+    @categories = @user.categories.order(:name)
   end
 
   # POST /documents
@@ -28,7 +32,7 @@ class DocumentsController < ApplicationController
   def create
     @document = current_user.documents.build(document_params)
     @user = current_user
-    @categories = @user.categories
+    @categories = @user.categories.order(:name)
 
     respond_to do |format|
       if @document.save
@@ -45,7 +49,7 @@ class DocumentsController < ApplicationController
   # PATCH/PUT /documents/1.json
   def update
     @user = current_user
-    @categories = @user.categories
+    @categories = @user.categories.order(:name)
 
     respond_to do |format|
       if @document.update(document_params)
