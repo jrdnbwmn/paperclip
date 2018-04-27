@@ -46,7 +46,11 @@
       <div class="mb1">
         <label class="label block" for="product_category_id">Choose exisiting category:</label>
         <div class="select">
-          <%= form.collection_select :category_id, @categories, :id, :name, :prompt => "Select a Category" %>
+          <select name="document[category_id]" id="document_category_id" skip_default_ids="false" allow_method_names_outside_object="true">  
+            <% @categories.uniq.each do |category| %>
+              <option value="<%= category.id %>"><%= category.name %></option>
+            <% end %>
+          </select>
         </div>
       </div>
       <div class="mb2">
