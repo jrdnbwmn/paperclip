@@ -6,7 +6,7 @@ class DocumentsController < ApplicationController
   def index
     @documents = Document.where(user_id: current_user)
     @user = current_user
-    @categories = @user.categories
+    @categories = @user.categories.order(:name)
   end
 
   # GET /documents/1

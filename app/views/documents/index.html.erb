@@ -20,7 +20,7 @@
           </div>
         <% end %>
       </li>
-      <% @categories.each do |category| %>
+      <% @categories.uniq.each do |category| %>
         <li>
           <%= link_to category_path(category), class: 'link link--highlight pl2 pr2 pts pbs block' do %>
             <div class="grid-row">
