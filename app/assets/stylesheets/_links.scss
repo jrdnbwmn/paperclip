@@ -83,6 +83,9 @@
 }
 
 // Highlighted
+.link--highlighted a,
+.link--highlighted a:link,
+.link--highlighted a:visited,
 .link--highlighted,
 .link--highlighted:link,
 .link--highlighted:visited {
@@ -91,12 +94,15 @@
     background-color: $primary-color;
 }
 
+.link--highlighted a:hover,
+.link--highlighted a:focus,
 .link--highlighted:hover,
 .link--highlighted:focus {
     color: $white;
     background-color: $primary-color;
 }
 
+.link--highlighted a:active,
 .link--highlighted:active {
     color: $shade;
     background-color: $primary-color;

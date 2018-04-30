@@ -1,5 +1,145 @@
-<p>
-  <strong>Category:</strong>
-</p>
+<!-- Desktop tags index -->
+<nav class="tags-index--desktop fixed top--0 bottom--0 left--0 bg--dark-tan hide-on-mobile">
+  <div class="tag-container pt2">
 
-<%= link_to 'Back', root_path %>
+    <h1 class="mb0">
+      <a href="/" class="link link--text monospace pl2 pr2 block mb2">
+        <%= image_tag "paperclip_logo.svg", class: "logo", alt: "Paperclip" %>
+      </a>
+    </h1>
+
+    <!-- Tags -->
+    <ul class="no-bullets">
+      <li>
+        <%= link_to root_path, class: 'link link--highlight pl2 pr2 pts pbs block' do %>
+          <div class="grid-row">
+            <span class="grid-column ellipsis pr0">All</span>
+            <span class="grid-column span-3 align--right pl0"><%= @documents.count %></span>
+          </div>
+        <% end %>
+      </li>
+      <% @categories.uniq.each do |category| %>
+        <li class="<%= active_class(category_path(category)) %>">
+          <%= link_to category_path(category), class: 'link link--highlight pl2 pr2 pts pbs block' do %>
+            <div class="grid-row">
+              <span class="grid-column ellipsis pr0"><%= category.name %></span>
+              <span class="grid-column span-3 align--right pl0"><%= category.documents.where(user_id: current_user).count %></span>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+
+      <!-- Todo -->
+      <li>
+          <a href="" class="link link--highlight pl2 pr2 pts pbs block">
+              <div class="grid-row">
+                  <span class="grid-column">Archived</span>
+                  <span class="grid-column span-3 align--right"></span>
+              </div>
+          </a>
+      </li>
+
+    </ul>
+
+  </div>
+
+  <!-- Settings -->
+  <div class="fixed bottom--0 left--0">
+      <div class="link link--text p2 js-popup-toggle"><i data-feather="settings"></i></div>
+      <!-- Popup -->
+      <div class="settings-popup absolute border--full rounded full-shadow bg--white js-popup">
+        <%= link_to edit_user_registration_path, class: 'link link--highlight block mb0 pl1 pr1 pts pbs border--bottom' do %>
+            <i data-feather="user" class="vertical--text-top"></i>&nbsp;&nbsp;Account
+          <% end %>
+          <%= link_to(destroy_user_session_path, method: :delete, class: "link link--highlight block mb0 pl1 pr1 pts pbs") do %>
+            <i data-feather="log-out" class="vertical--text-top"></i>&nbsp;&nbsp;Log Out
+          <% end %>
+      </div>
+  </div>
+    
+</nav>
+
+<!-- Mobile tags index -->
+<nav class="tags-index--mobile bg--dark-tan pts pbs show-on-mobile">
+    <div class="container">
+        <div class="clearfix">
+            <h1 class="mb0 float--left">
+              <a href="/" class="link link--text monospace">
+                <%= image_tag "paperclip_logo.svg", class: "logo--mobile relative", alt: "Paperclip" %>
+              </a>
+            </h1>
+            <div class="mobile-menu-icon float--right pl3 relative js-slidedown-toggle">
+                <span class="vertical--top">All</span> <i data-feather="menu" class="ml1"></i>
+            </div>
+        </div>
+    </div>
+    <div class="tags-index__mobile-nav js-slidedown">
+        <ul class="no-bullets border--top pt1 mts">
+            <li class="">
+                <a href="" class="link link--highlight pl2 pr2 pts pbs block">All</a>
+            </li>
+            <li class="">
+                <a href="" class="link link--highlight pl2 pr2 pts pbs block">blog</a>
+            </li>
+            <li class="">
+                <a href="" class="link link--highlight pl2 pr2 pts pbs block">business</a>
+            </li>
+            <li class="">
+                <a href="" class="link link--highlight pl2 pr2 pts pbs block">essays</a>
+            </li>
+            <li class="">
+                <a href="" class="link link--highlight pl2 pr2 pts pbs block">journal</a>
+            </li>
+            <li class="">
+                <a href="" class="link link--highlight pl2 pr2 pts pbs block">Archived</a>
+            </li>
+        <ul class="no-bullets border--top pt1 mt1">
+            <li>
+                <a href="settings.html" class="link link--highlight block pl2 pr2 pts pbs">Account</a>
+            </li>
+            <li>
+                <a href="" class="link link--highlight block pl2 pr2 pts pbs">Log Out</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Documents index -->
+<div class="documents-index p2">
+  <div class="pb2">
+
+    <!-- New -->
+    <div class="mb2">
+      <%= link_to new_document_path, class: 'btn btn--default' do %>
+        <i data-feather="plus" class="vertical--text-top relative" style="bottom:1px;"></i><span> New</span>
+      <% end %>
+    </div>
+
+    <!-- Documents -->
+    <div class="border--top">
+      <% @category.documents.each do |document| %>
+        <div class="border--bottom">
+          <div class="grid-row grid-row--center">
+            <div class="grid-column ellipsis">
+              <h4 class="mb0 ellipsis">
+                <%= link_to edit_document_path(document), class: 'link link--text block pt2 pb2' do %>
+                  <%= document.title %>
+                <% end %>
+              </h4>
+            </div>
+            <div class="grid-column span-3 align--right">
+              <%= link_to edit_document_path(document), class: 'link mr2' do %>
+                <i data-feather="edit" class="vertical--text-top"></i>
+              <% end %>
+              <!-- Todo -->
+              <%= link_to document, method: :delete, data: { confirm: 'Are you sure? Deleting documents is permanent.' }, class: "link" do %>
+                <i data-feather="trash" class="vertical--text-top"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
