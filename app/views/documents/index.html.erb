@@ -20,6 +20,7 @@
           </div>
         <% end %>
       </li>
+
       <% @categories.uniq.each do |category| %>
         <li>
           <%= link_to category_path(category), class: 'link link--highlight pl2 pr2 pts pbs block' do %>
@@ -31,16 +32,14 @@
         </li>
       <% end %>
 
-      <!-- Todo -->
       <li>
-          <a href="" class="link link--highlight pl2 pr2 pts pbs block">
-              <div class="grid-row">
-                  <span class="grid-column">Archived</span>
-                  <span class="grid-column span-3 align--right"></span>
-              </div>
-          </a>
+        <%= link_to archive_path, class: 'link link--highlight pl2 pr2 pts pbs block' do %>
+          <div class="grid-row">
+            <span class="grid-column">Archived</span>
+            <span class="grid-column span-3 align--right"></span>
+          </div>
+        <% end %>
       </li>
-
     </ul>
 
   </div>
@@ -133,9 +132,8 @@
               <%= link_to edit_document_path(document), class: 'link mr2' do %>
                 <i data-feather="edit" class="vertical--text-top"></i>
               <% end %>
-              <!-- Todo -->
-              <%= link_to document, method: :delete, data: { confirm: 'Are you sure? Deleting documents is permanent.' }, class: "link" do %>
-                <i data-feather="trash" class="vertical--text-top"></i>
+              <%= link_to document, method: :delete, class: "link" do %>
+                <i data-feather="archive" class="vertical--text-top"></i>
               <% end %>
             </div>
           </div>

@@ -87,3 +87,11 @@
 :-ms-input-placeholder {
     color: $light-gray;
 }
+
+
+// Misc
+// -------------------------------------------------------------------
+.textarea--invisible {
+    border: none;
+    background: transparent;
+}

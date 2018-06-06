@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
 
+  get '/documents/archive', to: 'documents#archive', as: 'archive'
   resources :documents
   resources :categories
 

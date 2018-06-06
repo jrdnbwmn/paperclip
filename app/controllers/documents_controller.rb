@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-  before_action :set_document, only: [:show, :edit, :update, :destroy]
+  before_action :set_document, only: [:show, :edit, :update]
 
   # GET /documents
   # GET /documents.json
@@ -7,6 +7,7 @@ class DocumentsController < ApplicationController
     @documents = Document.where(user_id: current_user)
     @user = current_user
     @categories = @user.categories.order(:name)
+    @deleted_documents = Document.only_deleted.where(user_id: current_user)
   end
 
   # GET /documents/1
@@ -65,11 +66,28 @@ class DocumentsController < ApplicationController
   # DELETE /documents/1
   # DELETE /documents/1.json
   def destroy
-    @document.destroy
+    @user = current_user
+    @document = @user.documents.with_deleted.find(params[:id])
+
+    if params[:type] == nil
+      @document.destroy
+    elsif params[:type] == 'forever'
+      @document.really_destroy!
+    elsif params[:type] == 'undelete'
+      @document.restore
+    end
+
     respond_to do |format|
-      format.html { redirect_to documents_url, notice: 'Document has been deleted.' }
+      format.html { redirect_to documents_url, notice: 'Document archived.' }
       format.json { head :no_content }
     end
+  end
+
+  def archive
+    @document = Document.only_deleted.where(user_id: current_user)
+    @documents = Document.only_deleted.where(user_id: current_user)
+    @user = current_user
+    @categories = @user.categories.order(:name)
   end
 
   private

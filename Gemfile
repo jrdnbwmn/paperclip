@@ -47,6 +47,9 @@ gem "autoprefixer-rails"
 # Simple form
 gem 'simple_form'
 
+# Paranoia
+gem "paranoia"
+
 #################
 
 group :development, :test do
