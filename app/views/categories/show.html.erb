@@ -29,14 +29,13 @@
         </li>
       <% end %>
 
-      <!-- Todo -->
       <li>
-          <a href="" class="link link--highlight pl2 pr2 pts pbs block">
-              <div class="grid-row">
-                  <span class="grid-column">Archived</span>
-                  <span class="grid-column span-3 align--right"></span>
-              </div>
-          </a>
+        <%= link_to archive_path, class: 'link link--highlight pl2 pr2 pts pbs block' do %>
+          <div class="grid-row">
+            <span class="grid-column">Archived</span>
+            <span class="grid-column span-3 align--right"></span>
+          </div>
+        <% end %>
       </li>
 
     </ul>
@@ -128,10 +127,10 @@
               </h4>
             </div>
             <div class="grid-column span-3 align--right">
-              <%= link_to edit_document_path(document), class: 'link mr2' do %>
+              <%= link_to edit_document_path(document), class: 'link mr2', title: "Edit" do %>
                 <i data-feather="edit" class="vertical--text-top"></i>
               <% end %>
-              <%= link_to document, method: :delete, class: "link" do %>
+              <%= link_to document, method: :delete, class: "link", title: "Archive" do %>
                 <i data-feather="archive" class="vertical--text-top"></i>
               <% end %>
             </div>

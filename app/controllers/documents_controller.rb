@@ -86,6 +86,7 @@ class DocumentsController < ApplicationController
   def archive
     @document = Document.only_deleted.where(user_id: current_user)
     @documents = Document.only_deleted.where(user_id: current_user)
+    @all_documents = Document.where(user_id: current_user)
     @user = current_user
     @categories = @user.categories.order(:name)
   end
